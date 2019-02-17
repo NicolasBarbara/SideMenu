@@ -10,12 +10,15 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = .white
+        let mainNavigationController = MainNavigationController(rootViewController: WhiteViewController())
+        let menuViewWidth = min((window?.bounds.width)! * 0.7,(window?.bounds.height)! * 0.7)
+        let rootVC = ViewControllerWithSideMenu(menuViewController: MyMenuViewController(), mainNavigationController: mainNavigationController, menuViewWidth:menuViewWidth , isScrollEnabel: true,isCloseWhenToucheOutside:true)
+        window?.rootViewController = rootVC
+        window?.makeKeyAndVisible()
         return true
     }
 
